@@ -1,0 +1,390 @@
+[oracle@dcoradbdev01 ~]$ id oracle
+uid=54321(oracle) gid=54321(oinstall) groups=54321(oinstall),54330(racdba),54322(dba),54323(oper),54324(backupdba),54325(dgdba),54326(kmdba)
+
+[oracle@dcoradbdev01 ~]$ df -Ph
+Filesystem             Size  Used Avail Use% Mounted on
+devtmpfs               7.8G     0  7.8G   0% /dev
+tmpfs                  7.9G     0  7.9G   0% /dev/shm
+tmpfs                  7.9G   42M  7.8G   1% /run
+tmpfs                  7.9G     0  7.9G   0% /sys/fs/cgroup
+/dev/mapper/rhel-root   10G  196M  9.8G   2% /
+/dev/mapper/rhel-usr    10G  4.0G  6.1G  40% /usr
+/dev/mapper/rhel-tmp   5.0G   69M  5.0G   2% /tmp
+/dev/mapper/rhel-var    10G  8.3G  1.7G  84% /var
+/dev/sda1             1014M  272M  743M  27% /boot
+/dev/mapper/rhel-dump   30G  247M   30G   1% /dump
+/dev/mapper/rhel-opt   5.0G  124M  4.9G   3% /opt
+/dev/mapper/data-data  220G  5.9G  215G   3% /data
+/dev/mapper/data-u01    50G   11G   40G  22% /u01
+/dev/mapper/rhel-home  5.0G  4.4G  640M  88% /home
+tmpfs                  1.6G  1.2M  1.6G   1% /run/user/42
+tmpfs                  1.6G     0  1.6G   0% /run/user/1002
+
+[oracle@dcoradbdev01 ~]$ cat /etc/redhat-release
+Red Hat Enterprise Linux release 8.4 (Ootpa)
+[oracle@dcoradbdev01 ~]$ hostname
+dcoradbdev01
+[oracle@dcoradbdev01 ~]$ ipconfig
+bash: ipconfig: command not found...
+Failed to search for file: /mnt/BaseOS was not found
+[oracle@dcoradbdev01 ~]$ ifconfig
+enp1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.143.140.114  netmask 255.255.255.0  broadcast 10.143.140.255
+        inet6 fe80::5af:8b50:baa8:48de  prefixlen 64  scopeid 0x20<link>
+        inet6 fe80::cc71:5385:7a9c:6782  prefixlen 64  scopeid 0x20<link>
+        inet6 fe80::bfff:5adf:39c3:e58f  prefixlen 64  scopeid 0x20<link>
+        ether 56:6f:c9:4d:00:02  txqueuelen 1000  (Ethernet)
+        RX packets 40928240  bytes 5904687579 (5.4 GiB)
+        RX errors 0  dropped 1610907  overruns 0  frame 0
+        TX packets 8878423  bytes 3274226924 (3.0 GiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 441354  bytes 32282316 (30.7 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 441354  bytes 32282316 (30.7 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+---------------------------------
+
+[oracle@dcoradbdev01 ~]$ rpm -qa | grep bc-1.07.1-5.el8.x86_64
+bc-1.07.1-5.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa | grep binutils
+binutils-2.30-93.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa | grep elfutils*
+elfutils-default-yama-scope-0.182-3.el8.noarch
+elfutils-libelf-devel-0.182-3.el8.x86_64
+elfutils-libelf-0.182-3.el8.x86_64
+elfutils-debuginfod-client-0.182-3.el8.x86_64
+elfutils-libs-0.182-3.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i fontconfig
+fontconfig-2.13.1-3.el8.x86_64
+fontconfig-devel-2.13.1-3.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i glibc
+glibc-headers-2.28-151.el8.x86_64
+glibc-devel-2.28-151.el8.x86_64
+glibc-langpack-en-2.28-151.el8.x86_64
+glibc-common-2.28-151.el8.x86_64
+glibc-2.28-151.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i ksh
+ksh-20120801-254.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i libaio
+libaio-devel-0.3.112-1.el8.x86_64
+libaio-0.3.112-1.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i libXrender
+libXrender-0.9.10-7.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i libX11
+libX11-xcb-1.6.8-4.el8.x86_64
+libX11-common-1.6.8-4.el8.noarch
+libX11-1.6.8-4.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i libXau
+libXau-1.0.9-3.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i libXi
+libXinerama-1.1.4-1.el8.x86_64
+libXi-1.7.10-1.el8.x86_64
+[oracle@dcoradbdev01 ~]$  rpm -qa |grep -i libXtst
+libXtst-1.2.3-7.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i libgcc
+libgcc-8.4.1-1.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i libnsl
+libnsl-2.28-151.el8.x86_64
+libnsl2-1.2.0-2.20180605git4a062cf.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i librdmacm
+librdmacm-32.0-4.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i libstdc++
+libstdc++-8.4.1-1.el8.x86_64
+libstdc++-devel-8.4.1-1.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i libxcbrpm -qa |grep -i libxcb
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i libxcb
+libxcb-1.13.1-1.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i libibverbs
+libibverbs-32.0-4.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i make
+make-4.2.1-10.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i smartmontools
+smartmontools-7.1-1.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i sysstat
+sysstat-11.7.3-5.el8.x86_64
+[oracle@dcoradbdev01 ~]$ rpm -qa |grep -i oracle*
+oracle-database-preinstall-19c-1.0-1.el8.x86_64
+[oracle@dcoradbdev01 ~]$
+
+---------------------------
+
+
+[oracle@dcoradbdev01 ~]$ cd /etc/sysctl.d/
+[oracle@dcoradbdev01 sysctl.d]$ ls -lrth *98
+ls: cannot access '*98': No such file or directory
+[oracle@dcoradbdev01 sysctl.d]$ ls -lrth *oracle*
+-rw-r--r-- 1 root root 2.6K Oct 13 15:27 99-oracle-database-preinstall-19c-sysctl.conf
+[oracle@dcoradbdev01 sysctl.d]$ cat 99-oracle-database-preinstall-19c-sysctl.conf
+# sysctl settings are defined through files in
+# /usr/lib/sysctl.d/, /run/sysctl.d/, and /etc/sysctl.d/.
+#
+# Vendors settings live in /usr/lib/sysctl.d/.
+# To override a whole file, create a new file with the same in
+# /etc/sysctl.d/ and put new settings there. To override
+# only specific settings, add a file with a lexically later
+# name in /etc/sysctl.d/ and put new settings there.
+#
+# For more information, see sysctl.conf(5) and sysctl.d(5).
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.conf.default.accept_source_route = 0
+net.ipv4.conf.default.secure_redirects = 0
+net.ipv4.conf.all.secure_redirects = 0
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.ip_forward = 0
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv6.conf.all.accept_ra = 0
+net.ipv6.conf.default.accept_ra = 0
+net.ipv6.conf.all.accept_redirects=0 net.ipv6.conf.default.accept _redirects = 0
+kernel.randomize_va_space = 1
+net.ipv4.icmp_ignore_bogus_error_responses = 1
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+
+# oracle-database-preinstall-19c setting for fs.file-max is 6815744
+fs.file-max = 6815744
+
+# oracle-database-preinstall-19c setting for kernel.sem is '250 32000 100 128'
+kernel.sem = 250 32000 100 128
+
+# oracle-database-preinstall-19c setting for kernel.shmmni is 4096
+kernel.shmmni = 4096
+
+# oracle-database-preinstall-19c setting for kernel.shmall is 1073741824 on x86_64
+kernel.shmall = 1073741824
+
+# oracle-database-preinstall-19c setting for kernel.shmmax is 4398046511104 on x86_64
+kernel.shmmax = 4398046511104
+
+# oracle-database-preinstall-19c setting for kernel.panic_on_oops is 1 per Orabug 19212317
+kernel.panic_on_oops = 1
+
+# oracle-database-preinstall-19c setting for net.core.rmem_default is 262144
+net.core.rmem_default = 262144
+
+# oracle-database-preinstall-19c setting for net.core.rmem_max is 4194304
+net.core.rmem_max = 4194304
+
+# oracle-database-preinstall-19c setting for net.core.wmem_default is 262144
+net.core.wmem_default = 262144
+
+# oracle-database-preinstall-19c setting for net.core.wmem_max is 1048576
+net.core.wmem_max = 1048576
+
+# oracle-database-preinstall-19c setting for net.ipv4.conf.all.rp_filter is 2
+net.ipv4.conf.all.rp_filter = 2
+
+# oracle-database-preinstall-19c setting for net.ipv4.conf.default.rp_filter is 2
+net.ipv4.conf.default.rp_filter = 2
+
+# oracle-database-preinstall-19c setting for fs.aio-max-nr is 1048576
+fs.aio-max-nr = 1048576
+
+# oracle-database-preinstall-19c setting for net.ipv4.ip_local_port_range is 9000 65500
+net.ipv4.ip_local_port_range = 9000 65500
+
+[oracle@dcoradbdev01 sysctl.d]$
+
+
+
+-----------------------------
+
+[oracle@dcoradbdev01 limits.d]$ cat oracle-database-preinstall-19c.conf
+
+# oracle-database-preinstall-19c setting for nofile soft limit is 1024
+oracle   soft   nofile    1024
+
+# oracle-database-preinstall-19c setting for nofile hard limit is 65536
+oracle   hard   nofile    65536
+
+# oracle-database-preinstall-19c setting for nproc soft limit is 16384
+# refer orabug15971421 for more info.
+oracle   soft   nproc    16384
+
+# oracle-database-preinstall-19c setting for nproc hard limit is 16384
+oracle   hard   nproc    16384
+
+# oracle-database-preinstall-19c setting for stack soft limit is 10240KB
+oracle   soft   stack    10240
+
+# oracle-database-preinstall-19c setting for stack hard limit is 32768KB
+oracle   hard   stack    32768
+
+# oracle-database-preinstall-19c setting for memlock hard limit is maximum of 128GB on x86_64 or 3GB on x86 OR 90 % of RAM
+oracle   hard   memlock    134217728
+
+# oracle-database-preinstall-19c setting for memlock soft limit is maximum of 128GB on x86_64 or 3GB on x86 OR 90% of RAM
+oracle   soft   memlock    134217728
+
+# oracle-database-preinstall-19c setting for data soft limit is 'unlimited'
+oracle   soft   data    unlimited
+
+# oracle-database-preinstall-19c setting for data hard limit is 'unlimited'
+oracle   hard   data    unlimited
+
+--------------------------------\
+
+
+[oracle@dcoradbdev01 limits.d]$ id oracle
+uid=54321(oracle) gid=54321(oinstall) groups=54321(oinstall),54330(racdba),54322(dba),54323(oper),54324(backupdba),54325(dgdba),54326(kmdba)
+[oracle@dcoradbdev01 limits.d]$ df -Ph
+Filesystem             Size  Used Avail Use% Mounted on
+devtmpfs               7.8G     0  7.8G   0% /dev
+tmpfs                  7.9G     0  7.9G   0% /dev/shm
+tmpfs                  7.9G   42M  7.8G   1% /run
+tmpfs                  7.9G     0  7.9G   0% /sys/fs/cgroup
+/dev/mapper/rhel-root   10G  196M  9.8G   2% /
+/dev/mapper/rhel-usr    10G  4.0G  6.1G  40% /usr
+/dev/mapper/rhel-tmp   5.0G   69M  5.0G   2% /tmp
+/dev/mapper/rhel-var    10G  8.3G  1.7G  84% /var
+/dev/sda1             1014M  272M  743M  27% /boot
+/dev/mapper/rhel-dump   30G  247M   30G   1% /dump
+/dev/mapper/rhel-opt   5.0G  124M  4.9G   3% /opt
+/dev/mapper/data-data  220G  5.9G  215G   3% /data
+/dev/mapper/data-u01    50G   11G   40G  22% /u01
+/dev/mapper/rhel-home  5.0G  4.4G  640M  88% /home
+tmpfs                  1.6G  1.2M  1.6G   1% /run/user/42
+tmpfs                  1.6G     0  1.6G   0% /run/user/1002
+tmpfs                  1.6G  4.0K  1.6G   1% /run/user/54321
+[oracle@dcoradbdev01 limits.d]$ echo $ORACLE_BASE
+
+[oracle@dcoradbdev01 limits.d]$ . oraenv
+ORACLE_SID = [oracle] ? APIMSIT
+The Oracle base has been set to /u01/app/oracle
+[oracle@dcoradbdev01 limits.d]$ echo $ORACLE_BASE
+/u01/app/oracle
+[oracle@dcoradbdev01 limits.d]$ echo $ORACLE_HOME
+/u01/app/oracle/product/19.3/dbhome_1
+[oracle@dcoradbdev01 limits.d]$ echo $PATH
+/home/oracle/.local/bin:/home/oracle/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/u01/app/oracle/product/19.3/dbhome_1/bin
+[oracle@dcoradbdev01 limits.d]$ echo $LD_LIBRARY_PATH
+/u01/app/oracle/product/19.3/dbhome_1/lib
+[oracle@dcoradbdev01 limits.d]$ lsnrctl status listener_apimsit
+
+LSNRCTL for Linux: Version 19.0.0.0.0 - Production on 25-NOV-2021 15:45:29
+
+Copyright (c) 1991, 2019, Oracle.  All rights reserved.
+
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=dcoradbdev01)(PORT=15210)))
+STATUS of the LISTENER
+------------------------
+Alias                     listener_apimsit
+Version                   TNSLSNR for Linux: Version 19.0.0.0.0 - Production
+Start Date                20-OCT-2021 12:57:24
+Uptime                    36 days 2 hr. 48 min. 4 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Listener Parameter File   /u01/app/oracle/product/19.3/dbhome_1/network/admin/listener.ora
+Listener Log File         /u01/app/oracle/diag/tnslsnr/dcoradbdev01/listener_apimsit/alert/log.xml
+Listening Endpoints Summary...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=dcoradbdev01)(PORT=15210)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC15210)))
+Services Summary...
+Service "APIMSIT" has 1 instance(s).
+  Instance "APIMSIT", status READY, has 1 handler(s) for this service...
+Service "APIMSITXDB" has 1 instance(s).
+  Instance "APIMSIT", status READY, has 1 handler(s) for this service...
+The command completed successfully
+[oracle@dcoradbdev01 limits.d]$
+
+
+SQL> select banner_full from v$version;
+
+BANNER_FULL
+--------------------------------------------------------------------------------
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0
+
+
+SQL> select name,log_mode from v$database;
+
+NAME      LOG_MODE
+--------- ------------
+APIMSIT   NOARCHIVELOG
+
+SQL> select file_name from dba_data_files;
+
+FILE_NAME
+--------------------------------------------------------------------------------
+/data/oradata/APIMSIT/datafile/o1_mf_system_jpg6br95_.dbf
+/data/oradata/APIMSIT/datafile/o1_mf_sysaux_jpg6cvdf_.dbf
+/data/oradata/APIMSIT/datafile/o1_mf_webmdata_jph9xw0h_.dbf
+/data/oradata/APIMSIT/datafile/o1_mf_users_jpg6dckt_.dbf
+/data/oradata/APIMSIT/datafile/o1_mf_webmindx_jph9ytdk_.dbf
+/data/oradata/APIMSIT/datafile/o1_mf_undotbs1_jpg6dbhb_.dbf
+
+6 rows selected.
+
+SQL> show parameter sga
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+allow_group_access_to_sga            boolean     FALSE
+lock_sga                             boolean     FALSE
+pre_page_sga                         boolean     TRUE
+sga_max_size                         big integer 5280M
+sga_min_size                         big integer 0
+sga_target                           big integer 5280M
+unified_audit_sga_queue_size         integer     1048576
+SQL> show parameter pga
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+pga_aggregate_limit                  big integer 3514M
+pga_aggregate_target                 big integer 1757M
+SQL> show parameter process
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+aq_tm_processes                      integer     1
+cell_offload_processing              boolean     TRUE
+db_writer_processes                  integer     1
+gcs_server_processes                 integer     0
+global_txn_processes                 integer     1
+job_queue_processes                  integer     80
+log_archive_max_processes            integer     4
+processes                            integer     320
+processor_group_name                 string
+SQL> show parameter session
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+java_max_sessionspace_size           integer     0
+java_soft_sessionspace_limit         integer     0
+license_max_sessions                 integer     0
+license_sessions_warning             integer     0
+session_cached_cursors               integer     50
+session_max_open_files               integer     10
+sessions                             integer     504
+shared_server_sessions               integer
+SQL> show parameter cursor
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+cursor_bind_capture_destination      string      memory+disk
+cursor_invalidation                  string      IMMEDIATE
+cursor_sharing                       string      EXACT
+cursor_space_for_time                boolean     FALSE
+open_cursors                         integer     300
+session_cached_cursors               integer     50
+SQL>
+
+
+-----\
+
+
+TABLESPACE                       MB_TOTAL    MB_USED    MB_FREE
+------------------------------ ---------- ---------- ----------
+TEMP                                  129         21        108
+
+SQL>
+
