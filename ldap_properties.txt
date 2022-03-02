@@ -1,0 +1,26 @@
+#User configurations
+com.aris.umc.config.encrypted = com.aris.umc.ldap.service.pwd
+com.aris.umc.ldap.recursion.depth = 0
+com.aris.umc.ldap.auth.only = false
+com.aris.umc.ldap.sync.skipOnFault = true
+com.aris.umc.ldap.attribute.memberof.resolveOnFirstLogin =false
+com.aris.umc.ldap.timeout = 180000
+com.aris.umc.ldap.active = true
+#LDAP
+com.aris.umc.ldap.url = ldap://10.168.49.140:389
+com.aris.umc.ldap.backup.url = ldap://10.144.18.75:389
+com.aris.umc.ldap.service.user = idbibank.ad\SAAPIMADMIN
+com.aris.umc.ldap.service.pwd = <Password>
+com.aris.umc.ldap.searchpath = DC=idbibank\,DC=ad
+com.aris.umc.ldap.user.searchpath = DC=idbibank\,DC=ad
+com.aris.umc.ldap.group.searchpath = DC=idbibank\,DC=ad
+com.aris.umc.ldap.filter.group = (objectClass=group)
+com.aris.umc.ldap.filter.user = (&(mail=)(givenName=)(sAMAccountName=)(sn=))
+com.aris.umc.ldap.referral = follow
+com.aris.umc.ldap.pagesize = 9999
+com.aris.umc.ldap.attribute.user.picture=thumbnailPhoto
+com.aris.umc.ldap.attribute.distinguishedname=distinguishedName
+com.aris.umc.notification.smtp.host = <smtp_host_machine>
+com.aris.umc.notification.sender = <sender_email_address>
+com.aris.umc.audit.enabled=true
+com.aris.umc.chart.display.technicalUsers.enabled=false
